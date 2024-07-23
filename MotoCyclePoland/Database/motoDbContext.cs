@@ -8,7 +8,7 @@ namespace MotoCyclePoland.Database
     public class MotoDbContext : DbContext
     {
         public DbSet<Brand> Brands { get; set; }
-        public DbSet<Motocycle> Motocycles { get; set; }
+        public DbSet<Motorcycle> Motorcycles { get; set; }
 
 
 
@@ -64,8 +64,8 @@ namespace MotoCyclePoland.Database
 
 
                 DateTime? endProduction = (temp.ProductionYears.Split(" - ").Length == 2) ? new DateTime(int.Parse(temp.ProductionYears.Split(" - ")[1]), 1, 1) : null;
-                modelBuilder.Entity<Motocycle>().HasData(
-                       new Motocycle
+                modelBuilder.Entity<Motorcycle>().HasData(
+                       new Motorcycle
                        {
                            Id = id,
                            Name = temp.MotocycleName,

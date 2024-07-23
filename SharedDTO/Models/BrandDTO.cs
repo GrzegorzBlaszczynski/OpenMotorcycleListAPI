@@ -3,6 +3,6 @@
     public class BrandDTO
     {
         public string Name { get; set; }
-        public List<MotocycleDTO> Motocycle { get; set; }
+        public List<MotorcycleDTO> Motorcycles { get; set; }
     }
 }

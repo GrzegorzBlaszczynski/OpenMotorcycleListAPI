@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using MotoCyclePoland.Database;
 using System.Configuration;
 using System.Globalization;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -27,6 +28,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddSwaggerGen(d =>
 {
     d.SwaggerDoc("v1", new OpenApiInfo { Title = "Moto", Version = "v1" });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    // W³¹cz komentarze XML
+    d.IncludeXmlComments(xmlPath);
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

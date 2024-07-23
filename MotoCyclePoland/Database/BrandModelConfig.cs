@@ -17,14 +17,14 @@ namespace MotoCyclePoland.Database
             builder.Property(t => t.Name).IsRequired().HasMaxLength(100);
             builder.HasIndex(u => u.Name)
                     .IsUnique();
-            builder.HasMany(x => x.Motocycles)
+            builder.HasMany(x => x.Motorcycles)
                 .WithOne(m => m.Brand).HasForeignKey(c=>c.BrandId);
         }
     }
 
-    public class BMotocycleModelConfig : IEntityTypeConfiguration<Motocycle>
+    public class BMotocycleModelConfig : IEntityTypeConfiguration<Motorcycle>
     {
-        public void Configure(EntityTypeBuilder<Motocycle> builder)
+        public void Configure(EntityTypeBuilder<Motorcycle> builder)
         {
             // Configuration for TodoItem
             builder.HasKey(t => t.Id);

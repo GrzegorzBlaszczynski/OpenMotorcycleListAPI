@@ -8,13 +8,13 @@ namespace MotoCyclePoland.AutoMapping
     {
         public MappingProfile()
         {
-            CreateMap<Brand, BrandDTO>().ForMember(x=>x.Motocycle,opt=>opt.MapFrom(c=>c.Motocycles));
+            CreateMap<Brand, BrandDTO>().ForMember(x=>x.Motorcycles,opt=>opt.MapFrom(c=>c.Motorcycles));
             CreateMap<Brand, SimpleBrandDTO>();
-            CreateMap<Motocycle, MotocycleDTO>()
-                .ForMember(x => x.MotocycleBrand, opt => opt.MapFrom(c => c.Brand.Name))
+            CreateMap<Motorcycle, MotorcycleDTO>()
+                .ForMember(x => x.MotorcycleBrand, opt => opt.MapFrom(c => c.Brand.Name))
                 .ForMember(x => x.Model, opt => opt.MapFrom(c => c.Name))
-                .ForMember(x => x.ProductionStartYears, opt => opt.MapFrom(c => c.StartProduction))
-                .ForMember(x => x.ProductionEndYears, opt => opt.MapFrom(x=>x.EndProduction));
+                .ForMember(x => x.ProductionStartYear, opt => opt.MapFrom(c => c.StartProduction))
+                .ForMember(x => x.ProductionEndYear, opt => opt.MapFrom(x=>x.EndProduction));
 
         }
     }

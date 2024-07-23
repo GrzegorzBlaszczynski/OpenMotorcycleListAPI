@@ -1,0 +1,53 @@
+﻿@page "/search"
+@inject HttpClient Http
+@rendermode RenderMode.InteractiveServer
+
+<h3>Search</h3>
+
+<InputText @bind-Value="searchingName" @oninput="OnInput"/>
+
+
+@foreach (MotorcycleDTO MotocycleDetails in foundMotorcycles.OrderBy(x => x.ProductionStartYear))
+{
+    <dl class="row">
+        <dt class="col-sm-2">Brand</dt>
+        <dd class="col-sm-10">@MotocycleDetails.MotorcycleBrand</dd>
+
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@MotocycleDetails.Model</dd>
+
+        <dt class="col-sm-2">Displacement</dt>
+        <dd class="col-sm-10">@MotocycleDetails.Displacement cc</dd>
+
+        <dt class="col-sm-2">HP</dt>
+        <dd class="col-sm-10">@MotocycleDetails.HorsePower KM</dd>
+
+        @if(MotocycleDetails.ProductionStartYear!=null){
+        <dt class="col-sm-2">Start Production</dt>
+        <dd class="col-sm-10">@MotocycleDetails.ProductionStartYear.Value.ToString("yyyy")</dd>
+        }
+        @if (MotocycleDetails.ProductionEndYear != null)
+        {
+            <dt class="col-sm-2">End Production</dt>
+            <dd class="col-sm-10">@MotocycleDetails.ProductionEndYear.Value.ToString("yyyy")</dd>
+        }
+
+        <br />
+        ---------------------------------------------------------------------------------------------------
+        <br />
+    </dl>
+}
+
+@code {
+    string searchingName="";
+    MotorcycleDTO[] foundMotorcycles = new MotorcycleDTO[0];
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        if (e.Value.ToString() != "")
+        {
+            var products = Http.GetAsync("api/Motorcycle/SearchByName?name=" + e.Value.ToString());
+            foundMotorcycles = await products.Result.Content.ReadFromJsonAsync<MotorcycleDTO[]>();
+        }
+    }
+}

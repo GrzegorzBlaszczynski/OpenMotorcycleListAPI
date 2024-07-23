@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MotoCyclePoland.Database.Tables
 {
-    public class Motocycle
+    public class Motorcycle
     {
         [Key]
         public int Id { get; set; }

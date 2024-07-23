@@ -25,10 +25,10 @@ Select brand and model to get details<br>
 
 <br>
 <br>
-@foreach (MotocycleDTO MotocycleDetails in foundmotocycles.OrderBy(x=>x.ProductionStartYears)){
+@foreach (MotorcycleDTO MotocycleDetails in foundmotocycles.OrderBy(x=>x.ProductionStartYear)){
     <dl class="row">
         <dt class="col-sm-2">Brand</dt>
-        <dd class="col-sm-10">@MotocycleDetails.MotocycleBrand</dd>
+        <dd class="col-sm-10">@MotocycleDetails.MotorcycleBrand</dd>
 
         <dt class="col-sm-2">Name</dt>
         <dd class="col-sm-10">@MotocycleDetails.Model</dd>
@@ -40,12 +40,12 @@ Select brand and model to get details<br>
         <dd class="col-sm-10">@MotocycleDetails.HorsePower KM</dd>
 
         <dt class="col-sm-2">Start Production</dt>
-        <dd class="col-sm-10">@MotocycleDetails.ProductionStartYears.Value.ToString("yyyy")</dd>
+        <dd class="col-sm-10">@MotocycleDetails.ProductionStartYear.Value.ToString("yyyy")</dd>
 
-        @if (MotocycleDetails.ProductionEndYears != null)
+        @if (MotocycleDetails.ProductionEndYear != null)
         {
             <dt class="col-sm-2">End Production</dt>
-            <dd class="col-sm-10">@MotocycleDetails.ProductionEndYears.Value.ToString("yyyy")</dd>
+            <dd class="col-sm-10">@MotocycleDetails.ProductionEndYear.Value.ToString("yyyy")</dd>
         }
 
         <br />
@@ -57,16 +57,16 @@ Select brand and model to get details<br>
 @code
 {
     private BrandDTO[] brands = new BrandDTO[0];
-    private MotocycleDTO[] motocycles = new MotocycleDTO[0];
+    private MotorcycleDTO[] motocycles = new MotorcycleDTO[0];
     private string selectedBrand;
     private string selectedMotocycle;
 
-    private MotocycleDTO[] foundmotocycles = new MotocycleDTO[0];
+    private MotorcycleDTO[] foundmotocycles = new MotorcycleDTO[0];
 
 
     protected override async Task OnInitializedAsync()
     {
-        var products = await Http.GetAsync("api/Motocycle/GetBrands");
+        var products = await Http.GetAsync("api/Motorcycle/GetBrands");
         brands = await products.Content.ReadFromJsonAsync<BrandDTO[]>();
     }
 
@@ -74,15 +74,15 @@ Select brand and model to get details<br>
     private async Task OnBrandSelect(string brand)
     {
         selectedBrand = brand;
-        var products = await Http.GetAsync("api/Motocycle/SearchWithBrand?brand=" + brand);
-        motocycles = await products.Content.ReadFromJsonAsync<MotocycleDTO[]>();
+        var products = await Http.GetAsync("api/Motorcycle/SearchWithBrand?brand=" + brand);
+        motocycles = await products.Content.ReadFromJsonAsync<MotorcycleDTO[]>();
     }
 
     private async Task OnMotocycleSelect(string motocycle)
     {
         selectedMotocycle = motocycle;
-        var products = await Http.GetAsync("api/Motocycle/SearchbyName?name=" + motocycle);
-        foundmotocycles = await products.Content.ReadFromJsonAsync<MotocycleDTO[]>();
+        var products = await Http.GetAsync("api/Motorcycle/GetByName?name=" + motocycle);
+        foundmotocycles = await products.Content.ReadFromJsonAsync<MotorcycleDTO[]>();
     
     }
 }

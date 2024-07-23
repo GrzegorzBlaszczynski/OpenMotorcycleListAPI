@@ -11,6 +11,6 @@ namespace MotoCyclePoland.Database.Tables
         public string Name { get; set; }
 
         [JsonIgnore]
-        public List<Motocycle> Motocycles { get; set; }
+        public List<Motorcycle> Motorcycles { get; set; }
     }
 }
