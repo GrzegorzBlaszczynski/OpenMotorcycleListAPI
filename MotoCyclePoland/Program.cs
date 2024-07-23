@@ -31,10 +31,10 @@ builder.Services.AddSwaggerGen(d =>
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-builder.Services.AddDbContext<motoDbContext>(options =>
+builder.Services.AddDbContext<MotoDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("MotoCyclePolandContext")));
 
-builder.Services.AddScoped<motoDbContext>();
+builder.Services.AddScoped<MotoDbContext>();
 
 
 var app = builder.Build();

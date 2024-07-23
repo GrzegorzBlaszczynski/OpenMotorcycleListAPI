@@ -11,7 +11,7 @@ using MotoCyclePoland.Database;
 
 namespace MotoCyclePoland.Migrations
 {
-    [DbContext(typeof(motoDbContext))]
+    [DbContext(typeof(MotoDbContext))]
     [Migration("20240722125343_test1234")]
     partial class test1234
     {

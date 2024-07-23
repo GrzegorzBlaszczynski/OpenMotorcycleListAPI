@@ -11,12 +11,12 @@ namespace MotoCyclePoland.Controllers
     [ApiController]
     public class MotocycleController : ControllerBase
     {
-        motoDbContext _context;
+        MotoDbContext _context;
         IMapper _mapper;
 
 
 
-        public MotocycleController(motoDbContext context, IMapper mapper) {
+        public MotocycleController(MotoDbContext context, IMapper mapper) {
             _context = context;
             _mapper = mapper;
         }

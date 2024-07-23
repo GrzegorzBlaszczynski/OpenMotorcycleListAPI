@@ -5,14 +5,14 @@ using SharedDTO.Models;
 
 namespace MotoCyclePoland.Database
 {
-    public class motoDbContext : DbContext
+    public class MotoDbContext : DbContext
     {
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Motocycle> Motocycles { get; set; }
 
 
 
-        public motoDbContext(DbContextOptions<motoDbContext> options)
+        public MotoDbContext(DbContextOptions<MotoDbContext> options)
             : base(options)
         {
         }
