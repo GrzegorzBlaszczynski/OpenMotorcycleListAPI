@@ -1,0 +1,72 @@
+﻿@page "/counter"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+
+<button @onclick="IncrementCount">Clickme</button>
+
+<InputText @bind-Value="text"></InputText>
+
+
+@text
+
+@code {
+    private int currentCount = 0;
+    private string text2Search;
+    private string text
+    {
+        get
+        {
+            return text2Search;
+        }
+        set
+        {
+            text2Search = value;
+            Changeed();
+
+        } 
+    }
+    private string ToSearch ="";
+
+    private List<string> options = new List<string>
+    {
+        "Opcja 1",
+        "Opcja 2",
+        "Opcja 3",
+        "Opcja 4"
+    };
+
+
+    private void Changeed()
+    {
+        HttpClient _client = new HttpClient();
+        HttpRequestMessage requestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("http://localhost:5028/api/Motocycle/GetBrands")
+            };
+
+        var response = _client.Send(requestMessage);
+        text = response.Content.ReadAsStringAsync().Result;
+    }
+
+    private async void IncrementCount()
+    {
+        currentCount++;
+
+        HttpClient _client = new HttpClient();
+        HttpRequestMessage requestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("http://127.0.0.1:5028/api/Motocycle/GetBrands")
+            };
+        requestMessage.Headers.Add("Access-Control-Allow-Origin", "*");
+        var response = await _client.SendAsync(requestMessage);
+        text = response.Content.ReadAsStringAsync().Result;
+    }
+}
