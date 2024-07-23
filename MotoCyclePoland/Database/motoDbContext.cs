@@ -61,6 +61,9 @@ namespace MotoCyclePoland.Database
             id = 1;
             foreach (var temp in motoList)
             {
+
+
+                DateTime? endProduction = (temp.ProductionYears.Split(" - ").Length == 2) ? new DateTime(int.Parse(temp.ProductionYears.Split(" - ")[1]), 1, 1) : null;
                 modelBuilder.Entity<Motocycle>().HasData(
                        new Motocycle
                        {
@@ -69,10 +72,14 @@ namespace MotoCyclePoland.Database
                            BrandId = BrandList.IndexOf(BrandList.FirstOrDefault(x=>x.Brand == temp.Brand))+1,
                            Displacement = int.Parse(temp.Displacement.Replace(" cm","")),
                            StartProduction = new DateTime(int.Parse(temp.ProductionYears.Split(" - ")[0]),1,1),
+                           EndProduction = endProduction,
                            HorsePower = int.Parse(temp.HorsePower.Replace("KM",""))
                        });
                 id++;
             }
+
+
+            streamReader.Close();
         }
     }
 }

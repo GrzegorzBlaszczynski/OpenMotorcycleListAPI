@@ -75,5 +75,16 @@ namespace MotoCyclePoland.Controllers
 
             return Ok(motocyclesDTO);
         }
+
+
+        [HttpGet]
+        [Route("GetAllMotocycles")]
+        public ActionResult<IEnumerable<MotocycleDTO>> GetAllMotocycles()
+        {
+            List<Motocycle> moto = _context.Motocycles.Include(m => m.Brand).ToList();
+            var motocyclesDTO = _mapper.Map<IEnumerable<MotocycleDTO>>(moto);
+
+            return Ok(motocyclesDTO);
+        }
     }
 }

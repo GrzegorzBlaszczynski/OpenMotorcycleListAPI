@@ -1,4 +1,5 @@
-﻿@page "/bikes"
+﻿
+@page "/bikes"
 @inject HttpClient Http
 @rendermode RenderMode.InteractiveServer
 
@@ -16,7 +17,7 @@ Select brand and model to get details<br>
 
 <InputSelect ValueExpression="@(()=>selectedMotocycle)" Value="selectedMotocycle" ValueChanged="@((string value) => OnMotocycleSelect(value))">
     <option value=""></option>
-    @foreach (var c in motocycles)
+    @foreach (var c in motocycles.DistinctBy(x=>x.Model))
     {
         <option value="@c.Model">@c.Model</option>
     }
@@ -24,8 +25,7 @@ Select brand and model to get details<br>
 
 <br>
 <br>
-@if (MotocycleDetails != null)
-{
+@foreach (MotocycleDTO MotocycleDetails in foundmotocycles.OrderBy(x=>x.ProductionStartYears)){
     <dl class="row">
         <dt class="col-sm-2">Brand</dt>
         <dd class="col-sm-10">@MotocycleDetails.MotocycleBrand</dd>
@@ -41,6 +41,16 @@ Select brand and model to get details<br>
 
         <dt class="col-sm-2">Start Production</dt>
         <dd class="col-sm-10">@MotocycleDetails.ProductionStartYears.Value.ToString("yyyy")</dd>
+
+        @if (MotocycleDetails.ProductionEndYears != null)
+        {
+            <dt class="col-sm-2">End Production</dt>
+            <dd class="col-sm-10">@MotocycleDetails.ProductionEndYears.Value.ToString("yyyy")</dd>
+        }
+
+        <br />
+        ---------------------------------------------------------------------------------------------------
+        <br />
     </dl>
 }
 
@@ -51,8 +61,8 @@ Select brand and model to get details<br>
     private string selectedBrand;
     private string selectedMotocycle;
 
+    private MotocycleDTO[] foundmotocycles = new MotocycleDTO[0];
 
-    private MotocycleDTO MotocycleDetails;
 
     protected override async Task OnInitializedAsync()
     {
@@ -72,7 +82,7 @@ Select brand and model to get details<br>
     {
         selectedMotocycle = motocycle;
         var products = await Http.GetAsync("api/Motocycle/SearchbyName?name=" + motocycle);
-        var motocycles = await products.Content.ReadFromJsonAsync<MotocycleDTO[]>();
-        MotocycleDetails = motocycles[0];
+        foundmotocycles = await products.Content.ReadFromJsonAsync<MotocycleDTO[]>();
+    
     }
 }

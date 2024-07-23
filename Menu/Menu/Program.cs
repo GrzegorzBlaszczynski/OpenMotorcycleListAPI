@@ -2,6 +2,7 @@ using Menu.Client.Pages;
 using Menu.Components;
 using Microsoft.Extensions.DependencyInjection;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents().AddInteractiveServerComponents();
 
 builder.Services.AddServerSideBlazor();
+
 
 builder.Services.AddCors(options =>
 {

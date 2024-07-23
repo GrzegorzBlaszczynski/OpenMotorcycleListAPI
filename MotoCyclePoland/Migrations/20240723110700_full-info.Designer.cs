@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MotoCyclePoland.Database;
 
@@ -11,9 +12,11 @@ using MotoCyclePoland.Database;
 namespace MotoCyclePoland.Migrations
 {
     [DbContext(typeof(MotoDbContext))]
-    partial class motoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240723110700_full-info")]
+    partial class fullinfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -7164,7 +7167,7 @@ namespace MotoCyclePoland.Migrations
                             Displacement = 1000,
                             EndProduction = new DateTime(2006, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HorsePower = 127,
-                            Name = "Z1000",
+                            Name = "Z1000 1000",
                             StartProduction = new DateTime(2004, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new

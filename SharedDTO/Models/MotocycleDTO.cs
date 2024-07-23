@@ -8,5 +8,11 @@
         public DateTime? ProductionEndYears { get; set; }
         public string HorsePower { get; set; }
         public string Displacement { get; set; }
+
+
+        public override string ToString()
+        {
+            return MotocycleBrand + Model;
+        }
     }
 }

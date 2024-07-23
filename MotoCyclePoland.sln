@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Menu", "Menu\Menu\Menu.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Menu.Client", "Menu\Menu.Client\Menu.Client.csproj", "{4D4B1D37-0C45-49B0-944B-B8F6568437C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDTO", "SharedDTO\SharedDTO.csproj", "{C911AC6E-13A0-448B-A975-F94CD4CD6D68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedDTO", "SharedDTO\SharedDTO.csproj", "{C911AC6E-13A0-448B-A975-F94CD4CD6D68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
