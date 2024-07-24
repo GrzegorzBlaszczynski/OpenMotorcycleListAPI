@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MotoCyclePoland.Migrations
+namespace MotorCyclePoland.Migrations
 {
     /// <inheritdoc />
     public partial class test123456343233232 : Migration

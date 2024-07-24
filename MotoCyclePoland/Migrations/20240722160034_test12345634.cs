@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace MotoCyclePoland.Migrations
+namespace MotorCyclePoland.Migrations
 {
     /// <inheritdoc />
     public partial class test12345634 : Migration

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MotoCyclePoland.Database;
+using MotorCyclePoland.Database;
 
 #nullable disable
 
-namespace MotoCyclePoland.Migrations
+namespace MotorCyclePoland.Migrations
 {
-    [DbContext(typeof(MotoDbContext))]
+    [DbContext(typeof(MotorDbContext))]
     [Migration("20240722121421_init")]
     partial class init
     {

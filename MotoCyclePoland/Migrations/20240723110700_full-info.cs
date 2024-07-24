@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MotoCyclePoland.Migrations
+namespace MotorCyclePoland.Migrations
 {
     /// <inheritdoc />
     public partial class fullinfo : Migration

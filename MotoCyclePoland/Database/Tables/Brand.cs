@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace MotoCyclePoland.Database.Tables
+namespace MotorCyclePoland.Database.Tables
 {
     public class Brand
     {

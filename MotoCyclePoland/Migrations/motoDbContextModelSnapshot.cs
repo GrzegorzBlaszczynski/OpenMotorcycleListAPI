@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MotoCyclePoland.Database;
+using MotorCyclePoland.Database;
 
 #nullable disable
 
-namespace MotoCyclePoland.Migrations
+namespace MotorCyclePoland.Migrations
 {
-    [DbContext(typeof(MotoDbContext))]
+    [DbContext(typeof(MotorDbContext))]
     partial class motoDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

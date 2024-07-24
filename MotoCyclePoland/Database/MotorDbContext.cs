@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using MotoCyclePoland.Database.Tables;
+using MotorCyclePoland.Database.Tables;
 using SharedDTO.Models;
 
-namespace MotoCyclePoland.Database
+namespace MotorCyclePoland.Database
 {
-    public class MotoDbContext : DbContext
+    public class MotorDbContext : DbContext
     {
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Motorcycle> Motorcycles { get; set; }
 
 
 
-        public MotoDbContext(DbContextOptions<MotoDbContext> options)
+        public MotorDbContext(DbContextOptions<MotorDbContext> options)
             : base(options)
         {
         }
@@ -21,7 +21,7 @@ namespace MotoCyclePoland.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BrandModelConfig());
-            modelBuilder.ApplyConfiguration(new BMotocycleModelConfig());
+            modelBuilder.ApplyConfiguration(new MotorcycleModelConfig());
             base.OnModelCreating(modelBuilder);
 
             StreamReader streamReader = new StreamReader("moto.csv");

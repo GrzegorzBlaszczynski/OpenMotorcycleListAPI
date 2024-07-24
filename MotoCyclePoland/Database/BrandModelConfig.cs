@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using MotoCyclePoland.Database.Tables;
+using MotorCyclePoland.Database.Tables;
 using System.Reflection.Emit;
 
-namespace MotoCyclePoland.Database
+namespace MotorCyclePoland.Database
 {
     public class BrandModelConfig : IEntityTypeConfiguration<Brand>
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
-            // Configuration for TodoItem
             builder.HasKey(t => t.Id);
             builder.Property(f => f.Id)
             .ValueGeneratedOnAdd();
@@ -19,15 +18,6 @@ namespace MotoCyclePoland.Database
                     .IsUnique();
             builder.HasMany(x => x.Motorcycles)
                 .WithOne(m => m.Brand).HasForeignKey(c=>c.BrandId);
-        }
-    }
-
-    public class BMotocycleModelConfig : IEntityTypeConfiguration<Motorcycle>
-    {
-        public void Configure(EntityTypeBuilder<Motorcycle> builder)
-        {
-            // Configuration for TodoItem
-            builder.HasKey(t => t.Id);
         }
     }
 }

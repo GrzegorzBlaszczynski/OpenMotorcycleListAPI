@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MotoCyclePoland.Database;
+using MotorCyclePoland.Database;
 using System.Configuration;
 using System.Globalization;
 using System.Reflection;
@@ -37,10 +37,10 @@ builder.Services.AddSwaggerGen(d =>
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-builder.Services.AddDbContext<MotoDbContext>(options =>
+builder.Services.AddDbContext<MotorDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("MotoCyclePolandContext")));
 
-builder.Services.AddScoped<MotoDbContext>();
+builder.Services.AddScoped<MotorDbContext>();
 
 
 var app = builder.Build();

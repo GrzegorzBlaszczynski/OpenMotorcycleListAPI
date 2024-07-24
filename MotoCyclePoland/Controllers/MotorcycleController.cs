@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MotoCyclePoland.Database;
-using MotoCyclePoland.Database.Tables;
+using MotorCyclePoland.Database;
+using MotorCyclePoland.Database.Tables;
 using SharedDTO.Models;
 
-namespace MotoCyclePoland.Controllers
+namespace MotorCyclePoland.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class MotorcycleController : ControllerBase
     {
-        MotoDbContext _context;
+        MotorDbContext _context;
         IMapper _mapper;
 
 
 
-        public MotorcycleController(MotoDbContext context, IMapper mapper) {
+        public MotorcycleController(MotorDbContext context, IMapper mapper) {
             _context = context;
             _mapper = mapper;
         }
@@ -114,8 +114,8 @@ namespace MotoCyclePoland.Controllers
         /// <summary>
         /// Returns a list of motorcycles that were produced within the specified date range.
         /// </summary>
-        /// <param name="from">Start date of the production</param>
-        /// <param name="to">To Date. Leave blank if you want to search up to the current date.</param>
+        /// <param name="from">The start date of the production</param>
+        /// <param name="to">The end date of the production Leave blank if you want to search up to the current date.</param>
         /// <returns>A list of motorcycles(MotorcycleDTO) produced between the specified dates</returns>
         [HttpGet]
         [Route("GetByProductionDate")]

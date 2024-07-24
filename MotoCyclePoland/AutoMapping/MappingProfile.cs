@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using MotoCyclePoland.Database.Tables;
+using MotorCyclePoland.Database.Tables;
 using SharedDTO.Models;
 
-namespace MotoCyclePoland.AutoMapping
+namespace MotorCyclePoland.AutoMapping
 {
     public class MappingProfile : Profile
     {
