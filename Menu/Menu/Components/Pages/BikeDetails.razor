@@ -1,0 +1,69 @@
+﻿<dl class="row">
+    <dt class="col-sm-2">Brand</dt>
+    <dd class="col-sm-10">@motocycle.MotorcycleBrand</dd>
+
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@motocycle.Model</dd>
+
+    <dt class="col-sm-2">Displacement</dt>
+    <dd class="col-sm-10">@motocycle.Displacement cc</dd>
+
+    <dt class="col-sm-2">HP</dt>
+    <dd class="col-sm-10">@motocycle.HorsePower KM</dd>
+
+    <dt class="col-sm-2">Start Production</dt>
+    <dd class="col-sm-10">@motocycle.ProductionStartYear.Value.ToString("yyyy")</dd>
+
+    @if (motocycle.ProductionEndYear != null)
+    {
+        <dt class="col-sm-2">End Production</dt>
+        <dd class="col-sm-10">@motocycle.ProductionEndYear.Value.ToString("yyyy")</dd>
+    }
+
+
+    @if (motocycle.TankCapacity != null)
+    {
+        <dt class="col-sm-2">Tank Capacity</dt>
+        <dd class="col-sm-10">@motocycle.TankCapacity.Value</dd>
+    }
+
+    @if (motocycle.Drive != null)
+    {
+        <dt class="col-sm-2">Drive</dt>
+        <dd class="col-sm-10">@motocycle.Drive</dd>
+    }
+
+
+
+    @if (motocycle.GearCount != null)
+    {
+        <dt class="col-sm-2">Gear Count</dt>
+        <dd class="col-sm-10">@motocycle.GearCount.Value</dd>
+    }
+
+
+    @if (motocycle.Size != null)
+    {
+        <dt class="col-sm-2">Size</dt>
+        <dd class="col-sm-10">@motocycle.Size</dd>
+    }
+
+
+    @if (motocycle.Mass != null)
+    {
+        <dt class="col-sm-2">Mass Empty</dt>
+        <dd class="col-sm-10">@motocycle.Mass</dd>
+    }
+
+
+    <br />
+    ---------------------------------------------------------------------------------------------------
+    <br />
+</dl>
+
+@code {
+
+    [Parameter]
+    public MotorcycleDTO motocycle{ get; set; }
+
+}

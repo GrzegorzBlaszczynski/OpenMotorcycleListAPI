@@ -23,5 +23,12 @@ namespace MotorCyclePoland.Database.Tables
         
         public DateTime? EndProduction { get; set; }
 
+        public float? TankCapacity { get; set; }
+        public string? Drive { get; set; }
+        public int? GearCount { get; set; }
+
+        public int? Mass { get; set; }
+
+        public string? Size { get; set; }
     }
 }

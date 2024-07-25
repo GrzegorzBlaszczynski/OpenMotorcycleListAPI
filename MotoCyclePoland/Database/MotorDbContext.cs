@@ -40,12 +40,17 @@ namespace MotorCyclePoland.Database
                     ProductionYears = data[2],
                     HorsePower = data[3],
                     Displacement = data[4],
+                    TankCap = data[5],
+                    Drive = data[6],
+                    GearCount = data[7],
+                    EmptyMass = data[8],
+                    Size = data[9]
                 };
 
                 motoList.Add(temp);
             }
 
-            List<AutoMotocycleDataSeed> BrandList = motoList.DistinctBy(x => x.Brand).ToList();
+            List<AutoMotocycleDataSeed> BrandList = motoList.DistinctBy(x => x.Brand.Replace(" ","")).ToList();
             int id = 1;
             foreach (var temp in BrandList)
             {
@@ -69,11 +74,16 @@ namespace MotorCyclePoland.Database
                        {
                            Id = id,
                            Name = temp.MotocycleName,
-                           BrandId = BrandList.IndexOf(BrandList.FirstOrDefault(x=>x.Brand == temp.Brand))+1,
-                           Displacement = int.Parse(temp.Displacement.Replace(" cm","")),
-                           StartProduction = new DateTime(int.Parse(temp.ProductionYears.Split(" - ")[0]),1,1),
+                           BrandId = BrandList.IndexOf(BrandList.FirstOrDefault(x => x.Brand == temp.Brand)) + 1,
+                           Displacement = int.Parse(temp.Displacement.Replace(" cm", "")),
+                           StartProduction = new DateTime(int.Parse(temp.ProductionYears.Split(" - ")[0]), 1, 1),
                            EndProduction = endProduction,
-                           HorsePower = int.Parse(temp.HorsePower.Replace("KM",""))
+                           HorsePower = int.Parse(temp.HorsePower.Replace("KM", "")),
+                           TankCapacity = (temp.TankCap == "" || temp.TankCap == "-") ? null : float.Parse(temp.TankCap.Replace(".",",")),
+                           Drive = (temp.Drive == "" )?null : temp.Drive,
+                           GearCount = (temp.GearCount == "") ? null : int.Parse(temp.GearCount),
+                           Mass = (temp.EmptyMass == "") ? null : int.Parse(temp.EmptyMass),
+                           Size = (temp.Size == "")?null:temp.Size
                        });
                 id++;
             }

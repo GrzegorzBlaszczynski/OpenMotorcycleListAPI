@@ -14,7 +14,8 @@ namespace MotorCyclePoland.AutoMapping
                 .ForMember(x => x.MotorcycleBrand, opt => opt.MapFrom(c => c.Brand.Name))
                 .ForMember(x => x.Model, opt => opt.MapFrom(c => c.Name))
                 .ForMember(x => x.ProductionStartYear, opt => opt.MapFrom(c => c.StartProduction))
-                .ForMember(x => x.ProductionEndYear, opt => opt.MapFrom(x=>x.EndProduction));
+                .ForMember(x => x.ProductionEndYear, opt => opt.MapFrom(x=>x.EndProduction))
+                .ForMember(x=> x.Mass, opt=> opt.MapFrom(x=>x.Mass));
 
         }
     }
