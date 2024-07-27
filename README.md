@@ -14,5 +14,5 @@ API provides detailed information on over 840 motorcycles from 33 different bran
 - Educational platforms and resources for motorcycle knowledge.
 
 
-Endpoints can be found in Swagger:
+Endpoints can be found and tested here:
 http://vps-9730ccb8.vps.ovh.net:5080/index.html
