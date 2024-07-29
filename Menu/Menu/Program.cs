@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5028") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5080") });
 
 
 var app = builder.Build();
