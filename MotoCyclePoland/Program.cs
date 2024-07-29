@@ -63,6 +63,7 @@ var app = builder.Build();
 //}
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAllOrigins");
 app.UseRouting();
 app.MapControllers();
 
