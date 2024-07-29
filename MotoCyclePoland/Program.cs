@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
@@ -24,6 +25,8 @@ builder.Services.AddCors(options =>
                    .AllowAnyHeader();
         });
 });
+
+
 
 builder.Services.AddSwaggerGen(d =>
 {
@@ -46,8 +49,10 @@ builder.Services.AddScoped<MotorDbContext>();
 var app = builder.Build();
 
 
-if (app.Environment.IsDevelopment())
-{
+
+
+//if (app.Environment.IsDevelopment())
+//{
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -55,7 +60,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Moto");
         c.RoutePrefix = string.Empty;
     });
-}
+//}
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();
